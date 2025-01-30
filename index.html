@@ -6,7 +6,6 @@
     <title>Blake DeSouza Website</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <style>
-        /* Previous styles remain the same */
         * {
             margin: 0;
             padding: 0;
@@ -66,27 +65,6 @@
             width: 100%;
         }
 
-        .tab-content {
-            flex: 1;
-            display: none;
-            padding: 40px;
-            background: white;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            overflow-y: auto;
-        }
-
-        .tab-content.active {
-            display: flex;
-        }
-
-        /* Tab styles */
-        .tab-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
         .tabs {
             display: flex;
             gap: 10px;
@@ -128,11 +106,10 @@
             display: block;
         }
 
-        /* Content styles */
         .about-content {
             display: flex;
             gap: 40px;
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: wrap;
         }
 
@@ -166,7 +143,39 @@
             color: #4B6CB7;
         }
 
-        /* Footer styles */
+        .language-list {
+            list-style: none;
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        .language-list li {
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9em;
+            position: relative;
+            padding-left: 25px;
+            width: 100%;
+        }
+
+        .language-list li::before {
+            content: "•";
+            position: absolute;
+            left: 12px;
+            font-size: 1.2em;
+        }
+
+        .python { background: #3572A5; }
+        .cpp { background: #f34b7d; }
+        .csharp { background: #178600; }
+        .html { background: #e34c26; }
+        .css { background: #563d7c; }
+        .java { background: #b07219; }
+
         footer {
             background: linear-gradient(135deg, #182848 0%, #4B6CB7 100%);
             color: white;
@@ -230,9 +239,41 @@
             <div id="about" class="tab-content active">
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Hello! I'm Blake, a student currently enrolled in Troy University studying Computer Science. I specialize in Python/C#/C++, HTML and CSS, and currently learning Java. I'm always looking to learn more languages and add to my toolbelt!</p>
+                        <p>Hello! I'm Blake, a student currently enrolled in Troy University studying Computer Science. I specialize in Python/C#/C++, HTML and CSS, and I am currently learning Java. I'm always looking to learn more languages to add to my toolbelt!</p>
                         <br>
-                        <p>I've worked on many personal projects relavent to all the languages above, although the languages I am most proficient in is Python, C#, and C++.</p>
+                        <p>I have worked on many personal projects in the past in all the languages listed in my skills.</p>
+                        <br>
+                        <h3 style="color: #4B6CB7; margin-bottom: 15px;">Achievements & Certifications</h3>
+                        <ul style="list-style-type: none;">
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                National English Honor Society – Sigma Kappa Delta (2020)
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                International Honor Society – Phi Theta Kappa (2020)
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                Microsoft Technology Associate Security Fundamentals Certification (2018)
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                Microsoft Technology Associate HTML and CSS Programming Certification (2018)
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                Future Business Leaders of America member (2015 – 2018)
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                Created and edited web-based Google Document for non-profit fundraising (2017)
+                            </li>
+                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                Microsoft Office Specialist Access Certification (2017)
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -241,15 +282,15 @@
                 <div class="skills-grid">
                     <div class="skill-card">
                         <i class="fas fa-code skill-icon"></i>
-                        <h3>Programming</h3>
-                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
-                            <span style="background: #3572A5; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">Python</span>
-                            <span style="background: #f34b7d; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">C++</span>
-                            <span style="background: #178600; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">C#</span>
-                            <span style="background: #e34c26; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">HTML</span>
-                            <span style="background: #563d7c; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">CSS</span>
-                            <span style="background: #b07219; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">Java</span>
-                        </div>
+                        <h3>Programming Languages</h3>
+                        <ul class="language-list">
+                            <li class="python">Python</li>
+                            <li class="cpp">C++</li>
+                            <li class="csharp">C#</li>
+                            <li class="html">HTML</li>
+                            <li class="css">CSS</li>
+                            <li class="java">Java</li>
+                        </ul>
                     </div>
                     <div class="skill-card">
                         <i class="fas fa-cogs skill-icon"></i>
