@@ -19,64 +19,71 @@
             color: #333;
         }
 
-        /* Header styles */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4B6CB7 0%, #182848 100%);
             color: white;
             padding: 100px 20px;
             text-align: center;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             margin-bottom: 20px;
-            border: 3px solid white;
+            border: 4px solid white;
+            object-fit: cover;
         }
 
-        /* Navigation */
-        nav {
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #667eea;
-        }
-
-        /* Section styles */
-        section {
-            padding: 60px 20px;
+        /* Updated Navigation/Tab styles */
+        .tab-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #2d3748;
+        .tabs {
+            display: flex;
+            gap: 10px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* About section */
+        .tab-button {
+            padding: 12px 24px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #666;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .tab-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .tab-button.active {
+            background-color: #4B6CB7;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 40px;
+            background: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Rest of your existing styles */
         .about-content {
             display: flex;
             gap: 40px;
@@ -89,7 +96,6 @@
             min-width: 300px;
         }
 
-        /* Skills section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -112,10 +118,9 @@
         .skill-icon {
             font-size: 2em;
             margin-bottom: 15px;
-            color: #667eea;
+            color: #4B6CB7;
         }
 
-        /* Contact section */
         .contact-info {
             text-align: center;
             max-width: 600px;
@@ -136,83 +141,103 @@
         }
 
         .social-links a:hover {
-            color: #667eea;
+            color: #4B6CB7;
         }
 
-        /* Responsive design */
         @media (max-width: 768px) {
-            nav ul {
+            .tabs {
                 flex-direction: column;
-                align-items: center;
-                gap: 15px;
             }
-
+            
             .about-content {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .tab-content {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="/api/placeholder/150/150" alt="Your Profile Picture" class="profile-img">
+        <img src="images/me.png" alt="Blake DeSouza" class="profile-img">
         <h1>Blake DeSouza</h1>
         <p>Computer Science Student at Troy University</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Hello! I'm Blake, a student currently enrolled in Troy University studying Computer Science. I specialize in Python/C#/C++, HTML and CSS, and currently learning Java. I'm always looking to learn more languages and add to my toolbelt! </p>
-                <br>
-                <p>I've worked on many personal projects relavent to all the languages above, although the languages I am most proficient in is Python, C#, and C++.</p>
-            </div>
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('about')">About Me</button>
+            <button class="tab-button" onclick="openTab('skills')">Skills</button>
+            <button class="tab-button" onclick="openTab('contact')">Contact</button>
         </div>
-    </section>
 
-    <section id="skills">
-        <h2>Skills & Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fas fa-code skill-icon"></i>
-                <h3>Programming</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
-                    <span style="background: #3572A5; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">Python</span>
-                    <span style="background: #f34b7d; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">C++</span>
-                    <span style="background: #178600; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">C#</span>
-                    <span style="background: #e34c26; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">HTML</span>
-                    <span style="background: #563d7c; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">CSS</span>
-                    <span style="background: #b07219; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">Java</span>
+        <div id="about" class="tab-content active">
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Blake, a student currently enrolled in Troy University studying Computer Science. I specialize in Python/C#/C++, HTML and CSS, and currently learning Java. I'm always looking to learn more languages and add to my toolbelt!</p>
+                    <br>
+                    <p>I've worked on many personal projects relavent to all the languages above, although the languages I am most proficient in is Python, C#, and C++.</p>
                 </div>
             </div>
-            <div class="skill-card">
-                <i class="fas fa-cogs skill-icon"></i>
-                <h3>Technical Skills</h3>
-                <p>I am very proficient with building computers, and always am tinkering with old parts and scraps I find.</p>
-            </div>
         </div>
-    </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact-info">
-            <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
-            <div class="social-links">
-                <a href="https://github.com/blakedesouza" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/blake-desouza-452595346/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:blakedesouza@protonmail.com"><i class="fas fa-envelope"></i></a>
+        <div id="skills" class="tab-content">
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3>Programming</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                        <span style="background: #3572A5; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">Python</span>
+                        <span style="background: #f34b7d; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">C++</span>
+                        <span style="background: #178600; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">C#</span>
+                        <span style="background: #e34c26; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">HTML</span>
+                        <span style="background: #563d7c; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">CSS</span>
+                        <span style="background: #b07219; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9em;">Java</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cogs skill-icon"></i>
+                    <h3>Technical Skills</h3>
+                    <p>I am very proficient with building computers, and always am tinkering with old parts and scraps I find.</p>
+                </div>
             </div>
         </div>
-    </section>
+
+        <div id="contact" class="tab-content">
+            <div class="contact-info">
+                <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+                <div class="social-links">
+                    <a href="https://github.com/blakedesouza" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/blake-desouza-452595346/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:blakedesouza@protonmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab content
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let content of tabContents) {
+                content.classList.remove('active');
+            }
+
+            // Remove active class from all buttons
+            const tabButtons = document.getElementsByClassName('tab-button');
+            for (let button of tabButtons) {
+                button.classList.remove('active');
+            }
+
+            // Show the selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to the clicked button
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>
