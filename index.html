@@ -11,6 +11,7 @@
             --secondary-color: #182848;
             --text-color: #333;
             --bg-color: #ffffff;
+            --card-bg: #ffffff;
         }
 
         .dark-mode {
@@ -18,6 +19,7 @@
             --secondary-color: #283858;
             --text-color: #ffffff;
             --bg-color: #1a1a1a;
+            --card-bg: #2d2d2d;
         }
 
         * {
@@ -27,22 +29,17 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        html, body {
-            height: 100%;
-            margin: 0;
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
+            background-color: var(--bg-color);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-color: var(--bg-color);
         }
 
-        /* Loading Animation */
+        /* Loading Screen */
         .loading {
             position: fixed;
             top: 0;
@@ -53,7 +50,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 2000;
             transition: opacity 0.5s;
         }
 
@@ -73,81 +70,187 @@
 
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, #4B6CB7 0%, #182848 100%);
             color: white;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+        .profile-container {
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            margin-bottom: 10px;
             border: 3px solid white;
             object-fit: cover;
             transition: transform 0.3s ease;
-            position: relative;
-            z-index: 1;
         }
 
         .profile-img:hover {
             transform: scale(1.05);
         }
 
-        /* Dark Mode Toggle */
+        /* Theme Toggle */
         .theme-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
-            background: var(--primary-color);
-            border: 2px solid white;
-            color: white !important;
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.5);
+            color: white;
             font-size: 1.5em;
             cursor: pointer;
-            padding: 12px;
+            z-index: 1000;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
         }
 
-        .theme-toggle i {
-            color: white;
-        }
-
         .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            background-color: var(--secondary-color);
+            background: rgba(255,255,255,0.1);
+            transform: scale(1.1);
         }
 
-        /* Main Content Styles */
+        /* Main Content */
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
-            background-color: var(--bg-color);
         }
 
+        /* Tab Container */
+        .tab-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            padding: 8px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: var(--text-color);
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .tab-button:hover {
+            background: rgba(75, 108, 183, 0.1);
+        }
+
+        .tab-button.active {
+            background-color: #4B6CB7;
+            color: white;
+        }
+
+        /* Content Styles */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .language-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .language-list li {
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            list-style: none;
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .language-list li:hover {
+            transform: translateX(5px);
+        }
+
+        /* Language Colors */
+        .python { background: #3572A5; }
+        .cpp { background: #f34b7d; }
+        .csharp { background: #178600; }
+        .html { background: #e34c26; }
+        .css { background: #563d7c; }
+        .java { background: #b07219; }
+
+        /* Spacer Image */
         .spacer-image {
             width: auto;
             max-height: 200px;
             display: block;
             margin: 20px auto;
-            object-fit: contain;
             transition: transform 0.3s ease;
         }
 
@@ -155,152 +258,13 @@
             transform: scale(1.05);
         }
 
-        /* Tab Styles */
-        .tab-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            margin: 0 auto;
-            padding: 20px;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            background-color: var(--bg-color);
-            padding: 20px;
-            border-radius: 8px 8px 0 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .tab-button {
-            padding: 12px 24px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 1.1em;
-            color: var(--text-color);
-            border-radius: 6px;
-            transition: all 0.3s;
-        }
-
-        .tab-button:hover {
-            background-color: rgba(75, 108, 183, 0.1);
-        }
-
-        .tab-button.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 40px;
-            background: var(--bg-color);
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            animation: fadeIn 0.6s ease-in;
-        }
-
-        .tab-content.active {
-            display: block;
-            opacity: 1;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* About Content Styles */
-        .about-content {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-            flex-wrap: wrap;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .skill-card {
-            background: var(--bg-color);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            animation: fadeIn 0.6s ease-in;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-icon {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        /* Language List Styles */
-        .language-list {
-            list-style: none;
-            margin-top: 15px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            width: 100%;
-        }
-
-        .language-list li {
-            padding: 8px 15px;
-            border-radius: 20px;
-            color: white;
-            font-size: 0.9em;
-            position: relative;
-            padding-left: 25px;
-            width: 100%;
-            transition: transform 0.2s ease;
-        }
-
-        .language-list li:hover {
-            transform: translateX(5px);
-        }
-
-        .language-list li::before {
-            content: "•";
-            position: absolute;
-            left: 12px;
-            font-size: 1.2em;
-        }
-
-        /* Footer Styles */
+        /* Footer */
         footer {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            background: linear-gradient(135deg, #182848 0%, #4B6CB7 100%);
             color: white;
             padding: 30px 20px;
-            flex-shrink: 0;
-            margin-top: auto;
-        }
-
-        .contact-info {
             text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+            margin-top: auto;
         }
 
         .social-links {
@@ -313,12 +277,12 @@
         .social-links a {
             color: white;
             font-size: 1.5em;
-            transition: transform 0.3s, color 0.3s;
+            text-decoration: none;
+            transition: transform 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #f0f0f0;
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
 
         /* Scroll to Top Button */
@@ -334,7 +298,7 @@
             border: none;
             cursor: pointer;
             opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
+            transition: all 0.3s ease;
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -347,31 +311,33 @@
 
         .scroll-top:hover {
             transform: translateY(-3px);
+            background: var(--secondary-color);
         }
 
-        /* Language Colors */
-        .python { background: #3572A5; }
-        .cpp { background: #f34b7d; }
-        .csharp { background: #178600; }
-        .html { background: #e34c26; }
-        .css { background: #563d7c; }
-        .java { background: #b07219; }
+        /* Error Handling Styles */
+        .error-message {
+            background: #ff5757;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin: 10px 0;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .tabs {
-                flex-direction: column;
-            }
-            
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .tab-content {
-                padding: 20px;
-            }
-
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -380,14 +346,25 @@
                 grid-template-columns: 1fr;
             }
             
+            .tab-container {
+                padding: 10px;
+            }
+            
+            .about-content, .skill-card {
+                padding: 20px;
+            }
+            
             .profile-img {
-                width: 120px;
-                height: 120px;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .tabs {
+                flex-direction: column;
             }
             
             .tab-button {
                 width: 100%;
-                text-align: center;
             }
         }
     </style>
@@ -399,17 +376,19 @@
     </div>
 
     <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <i class="fas fa-moon"></i>
     </button>
 
     <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-top">
+    <button id="scrollToTop" class="scroll-top" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <header>
-        <img src="images/me.png" alt="Blake DeSouza" class="profile-img">
+        <div class="profile-container">
+            <img src="images/me.png" alt="Blake DeSouza" class="profile-img" id="profileImage">
+        </div>
         <h1>Blake DeSouza</h1>
         <p>Computer Science Student at Troy University</p>
     </header>
@@ -417,55 +396,31 @@
     <div class="main-content">
         <div class="tab-container">
             <div class="tabs">
-                <button class="tab-button active" onclick="openTab('about')">About Me</button>
-                <button class="tab-button" onclick="openTab('skills')">Skills</button>
+                <button class="tab-button active" onclick="openTab('about')" aria-label="About section">About Me</button>
+                <button class="tab-button" onclick="openTab('skills')" aria-label="Skills section">Skills</button>
             </div>
 
             <div id="about" class="tab-content active">
                 <div class="about-content">
-                    <div class="about-text">
-                        <p>Hello! I'm Blake, a student currently enrolled in Troy University studying Computer Science. I specialize in Python/C#/C++, HTML and CSS, and I am currently learning Java. I'm always looking to learn more languages to add to my toolbelt!</p>
-                        <br>
-                        <h3 style="color: var(--primary-color); margin-bottom: 15px;">Achievements & Certifications</h3>
-                        <ul style="list-style-type: none;">
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                National English Honor Society – Sigma Kappa Delta (2020)
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                International Honor Society – Phi Theta Kappa (2020)
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Microsoft Technology Associate Security Fundamentals Certification (2018)
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Microsoft Technology Associate HTML and CSS Programming Certification (2018)
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Future Business Leaders of America member (2015 – 2018)
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Created and edited web-based Google Document for non-profit fundraising (2017)
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Microsoft Office Specialist Access Certification (2017)
-                            </li>
-                        </ul>
-                    </div>
+                    <p>Hello! I'm Blake, a student currently enrolled in Troy University studying Computer Science. I specialize in Python/C#/C++, HTML and CSS, and I am currently learning Java. I'm always looking to learn more languages to add to my toolbelt!</p>
+                    
+                    <h3 style="color: var(--primary-color); margin: 20px 0;">Achievements & Certifications</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;">• National English Honor Society – Sigma Kappa Delta (2020)</li>
+                        <li style="margin-bottom: 10px;">• International Honor Society – Phi Theta Kappa (2020)</li>
+                        <li style="margin-bottom: 10px;">• Microsoft Technology Associate Security Fundamentals Certification (2018)</li>
+                        <li style="margin-bottom: 10px;">• Microsoft Technology Associate HTML and CSS Programming Certification (2018)</li>
+                        <li style="margin-bottom: 10px;">• Future Business Leaders of America member (2015 – 2018)</li>
+                        <li style="margin-bottom: 10px;">• Created and edited web-based Google Document for non-profit fundraising (2017)</li>
+                        <li style="margin-bottom: 10px;">• Microsoft Office Specialist Access Certification (2017)</li>
+                    </ul>
                 </div>
             </div>
 
             <div id="skills" class="tab-content">
                 <div class="skills-grid">
                     <div class="skill-card">
-                        <i class="fas fa-code skill-icon"></i>
-                        <h3>Programming Languages I am Proficient in</h3>
+                        <h3><i class="fas fa-code"></i> Programming Languages I am Proficient in</h3>
                         <ul class="language-list">
                             <li class="python">Python</li>
                             <li class="cpp">C++</li>
@@ -476,50 +431,30 @@
                         </ul>
                     </div>
                     <div class="skill-card">
-                        <i class="fas fa-cogs skill-icon"></i>
-                        <h3>Technical Skills</h3>
-                        <ul class="technical-skills-list" style="list-style-type: none; margin-top: 15px;">
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Building custom computer systems from component selection to assembly
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Computer repair and maintenance for both hardware and software issues
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Software troubleshooting and debugging
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Hardware diagnostics and problem resolution
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Virtual Machine creation and management
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
-                                Server administration for various purposes including gaming and storage solutions
-                            </li>
+                        <h3><i class="fas fa-cogs"></i> Technical Skills</h3>
+                        <ul style="list-style: none; margin-top: 20px;">
+                            <li style="margin-bottom: 10px;">• Building custom computer systems from component selection to assembly</li>
+                            <li style="margin-bottom: 10px;">• Computer repair and maintenance for both hardware and software issues</li>
+                            <li style="margin-bottom: 10px;">• Software troubleshooting and debugging</li>
+                            <li style="margin-bottom: 10px;">• Hardware diagnostics and problem resolution</li>
+                            <li style="margin-bottom: 10px;">• Virtual Machine creation and management</li>
+                            <li style="margin-bottom: 10px;">• Server administration for various purposes including gaming and storage solutions</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <img src="images/diego.png" alt="Diego" class="spacer-image">
+
+        <img src="images/diego.png" alt="Diego" class="spacer-image" id="spacerImage">
     </div>
 
     <footer>
-        <div class="contact-info">
-            <h2>Contact Me</h2>
-            <p>I'm always interested in new opportunities. Feel free to reach out!</p>
-            <div class="social-links">
-                <a href="https://github.com/blakedesouza" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/blake-desouza-452595346/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:blakedesouza@protonmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
+        <h2>Contact Me</h2>
+        <p>I'm always interested in new opportunities. Feel free to reach out!</p>
+        <div class="social-links">
+            <a href="https://github.com/blakedesouza" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/blake-desouza-452595346/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:blakedesouza@protonmail.com" aria-label="Email Me"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
 
@@ -535,11 +470,29 @@
             }, 1000);
         });
 
+        // Error Handling for Images
+        function handleImageError(imgElement, fallbackText) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = `Failed to load ${fallbackText}`;
+            imgElement.parentNode.insertBefore(errorDiv, imgElement.nextSibling);
+            errorDiv.style.display = 'block';
+        }
+
+        document.getElementById('profileImage').onerror = function() {
+            handleImageError(this, 'profile image');
+        };
+
+        document.getElementById('spacerImage').onerror = function() {
+            handleImageError(this, 'spacer image');
+        };
+
         // Tab Functionality
         function openTab(tabName) {
             const tabContents = document.getElementsByClassName('tab-content');
             for (let content of tabContents) {
                 content.classList.remove('active');
+                content.style.display = 'none';
             }
 
             const tabButtons = document.getElementsByClassName('tab-button');
@@ -547,21 +500,47 @@
                 button.classList.remove('active');
             }
 
-            document.getElementById(tabName).classList.add('active');
+            const selectedTab = document.getElementById(tabName);
+            selectedTab.style.display = 'block';
+            setTimeout(() => {
+                selectedTab.classList.add('active');
+            }, 50);
+            
             event.currentTarget.classList.add('active');
+
+            // Update URL hash without scrolling
+            history.pushState(null, null, `#${tabName}`);
         }
 
-        // Dark Mode Toggle
+        // Handle URL hash on page load
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.slice(1);
+            if (hash && ['about', 'skills'].includes(hash)) {
+                openTab(hash);
+            }
+        });
+
+        // Dark Mode Toggle with Local Storage
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
 
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             themeIcon.classList.toggle('fa-moon');
             themeIcon.classList.toggle('fa-sun');
+            
+            // Save theme preference
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         });
 
-        // Scroll to Top
+        // Scroll to Top Functionality
         const scrollToTopBtn = document.getElementById('scrollToTop');
 
         window.onscroll = function() {
@@ -576,6 +555,16 @@
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
+            });
+        });
+
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
