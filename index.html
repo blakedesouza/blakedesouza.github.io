@@ -6,30 +6,89 @@
     <title>Blake DeSouza Website</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <style>
+        :root {
+            --primary-color: #4B6CB7;
+            --secondary-color: #182848;
+            --text-color: #333;
+            --bg-color: #ffffff;
+        }
+
+        .dark-mode {
+            --primary-color: #6B8CD7;
+            --secondary-color: #283858;
+            --text-color: #ffffff;
+            --bg-color: #1a1a1a;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         html, body {
             height: 100%;
             margin: 0;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-color);
             display: flex;
             flex-direction: column;
+            background-color: var(--bg-color);
         }
 
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Header Styles */
         header {
-            background: linear-gradient(135deg, #4B6CB7 0%, #182848 100%);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             padding: 40px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
         }
 
         .profile-img {
@@ -39,12 +98,42 @@
             margin-bottom: 15px;
             border: 3px solid white;
             object-fit: cover;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Main Content Styles */
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
+            background-color: var(--bg-color);
         }
 
         .spacer-image {
@@ -53,8 +142,14 @@
             display: block;
             margin: 20px auto;
             object-fit: contain;
+            transition: transform 0.3s ease;
         }
 
+        .spacer-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Tab Styles */
         .tab-container {
             flex: 1;
             display: flex;
@@ -68,7 +163,7 @@
         .tabs {
             display: flex;
             gap: 10px;
-            background-color: white;
+            background-color: var(--bg-color);
             padding: 20px;
             border-radius: 8px 8px 0 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -80,32 +175,42 @@
             background: none;
             cursor: pointer;
             font-size: 1.1em;
-            color: #666;
+            color: var(--text-color);
             border-radius: 6px;
             transition: all 0.3s;
         }
 
         .tab-button:hover {
-            background-color: #f0f0f0;
+            background-color: rgba(75, 108, 183, 0.1);
         }
 
         .tab-button.active {
-            background-color: #4B6CB7;
+            background-color: var(--primary-color);
             color: white;
         }
 
         .tab-content {
             display: none;
             padding: 40px;
-            background: white;
+            background: var(--bg-color);
             border-radius: 0 0 8px 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            animation: fadeIn 0.6s ease-in;
         }
 
         .tab-content.active {
             display: block;
+            opacity: 1;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* About Content Styles */
         .about-content {
             display: flex;
             gap: 40px;
@@ -118,19 +223,21 @@
             min-width: 300px;
         }
 
+        /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
         .skill-card {
-            background: white;
+            background: var(--bg-color);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            animation: fadeIn 0.6s ease-in;
         }
 
         .skill-card:hover {
@@ -140,9 +247,10 @@
         .skill-icon {
             font-size: 2em;
             margin-bottom: 15px;
-            color: #4B6CB7;
+            color: var(--primary-color);
         }
 
+        /* Language List Styles */
         .language-list {
             list-style: none;
             margin-top: 15px;
@@ -160,6 +268,11 @@
             position: relative;
             padding-left: 25px;
             width: 100%;
+            transition: transform 0.2s ease;
+        }
+
+        .language-list li:hover {
+            transform: translateX(5px);
         }
 
         .language-list li::before {
@@ -169,18 +282,13 @@
             font-size: 1.2em;
         }
 
-        .python { background: #3572A5; }
-        .cpp { background: #f34b7d; }
-        .csharp { background: #178600; }
-        .html { background: #e34c26; }
-        .css { background: #563d7c; }
-        .java { background: #b07219; }
-
+        /* Footer Styles */
         footer {
-            background: linear-gradient(135deg, #182848 0%, #4B6CB7 100%);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
             color: white;
             padding: 30px 20px;
             flex-shrink: 0;
+            margin-top: auto;
         }
 
         .contact-info {
@@ -199,13 +307,51 @@
         .social-links a {
             color: white;
             font-size: 1.5em;
-            transition: color 0.3s;
+            transition: transform 0.3s, color 0.3s;
         }
 
         .social-links a:hover {
             color: #f0f0f0;
+            transform: scale(1.1);
         }
 
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Language Colors */
+        .python { background: #3572A5; }
+        .cpp { background: #f34b7d; }
+        .csharp { background: #178600; }
+        .html { background: #e34c26; }
+        .css { background: #563d7c; }
+        .java { background: #b07219; }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .tabs {
                 flex-direction: column;
@@ -219,10 +365,43 @@
             .tab-content {
                 padding: 20px;
             }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .language-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .tab-button {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loadingScreen">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <header>
         <img src="images/me.png" alt="Blake DeSouza" class="profile-img">
         <h1>Blake DeSouza</h1>
@@ -241,34 +420,34 @@
                     <div class="about-text">
                         <p>Hello! I'm Blake, a student currently enrolled in Troy University studying Computer Science. I specialize in Python/C#/C++, HTML and CSS, and I am currently learning Java. I'm always looking to learn more languages to add to my toolbelt!</p>
                         <br>
-                        <h3 style="color: #4B6CB7; margin-bottom: 15px;">Achievements & Certifications</h3>
+                        <h3 style="color: var(--primary-color); margin-bottom: 15px;">Achievements & Certifications</h3>
                         <ul style="list-style-type: none;">
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 National English Honor Society – Sigma Kappa Delta (2020)
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 International Honor Society – Phi Theta Kappa (2020)
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Microsoft Technology Associate Security Fundamentals Certification (2018)
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Microsoft Technology Associate HTML and CSS Programming Certification (2018)
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Future Business Leaders of America member (2015 – 2018)
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Created and edited web-based Google Document for non-profit fundraising (2017)
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Microsoft Office Specialist Access Certification (2017)
                             </li>
                         </ul>
@@ -280,7 +459,7 @@
                 <div class="skills-grid">
                     <div class="skill-card">
                         <i class="fas fa-code skill-icon"></i>
-                        <h3>Programming Languages I am Profecient in</h3>
+                        <h3>Programming Languages I am Proficient in</h3>
                         <ul class="language-list">
                             <li class="python">Python</li>
                             <li class="cpp">C++</li>
@@ -295,27 +474,27 @@
                         <h3>Technical Skills</h3>
                         <ul class="technical-skills-list" style="list-style-type: none; margin-top: 15px;">
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Building custom computer systems from component selection to assembly
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Computer repair and maintenance for both hardware and software issues
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Software troubleshooting and debugging
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Hardware diagnostics and problem resolution
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Virtual Machine creation and management
                             </li>
                             <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                                <span style="position: absolute; left: 0; color: #4B6CB7;">•</span>
+                                <span style="position: absolute; left: 0; color: var(--primary-color);">•</span>
                                 Server administration for various purposes including gaming and storage solutions
                             </li>
                         </ul>
@@ -339,6 +518,18 @@
     </footer>
 
     <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Tab Functionality
         function openTab(tabName) {
             const tabContents = document.getElementsByClassName('tab-content');
             for (let content of tabContents) {
@@ -353,6 +544,34 @@
             document.getElementById(tabName).classList.add('active');
             event.currentTarget.classList.add('active');
         }
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeIcon.classList.toggle('fa-moon');
+            themeIcon.classList.toggle('fa-sun');
+        });
+
+        // Scroll to Top
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        };
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
 </body>
 </html>
