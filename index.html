@@ -3,421 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blake DeSouza Website</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-    <style>
-        :root {
-            --primary-color: #4B6CB7;
-            --secondary-color: #182848;
-            --text-color: #333;
-            --bg-color: #ffffff;
-            --card-bg: #ffffff;
-        }
-
-        .dark-mode {
-            --primary-color: #6B8CD7;
-            --secondary-color: #283858;
-            --text-color: #ffffff;
-            --bg-color: #1a1a1a;
-            --card-bg: #2d2d2d;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Loading Screen */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            transition: opacity 0.5s;
-        }
-
-        .loading-spinner {
-            border: 4px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top: 4px solid white;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #4B6CB7 0%, #182848 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .profile-container {
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid white;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: transparent;
-            border: 2px solid rgba(255,255,255,0.5);
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
-            z-index: 1000;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255,255,255,0.1);
-            transform: scale(1.1);
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Tab Container */
-        .tab-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tab-button {
-            padding: 8px 20px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            color: var(--text-color);
-            border-radius: 4px;
-            transition: all 0.3s;
-            font-size: 1rem;
-        }
-
-        .tab-button:hover {
-            background: rgba(75, 108, 183, 0.1);
-        }
-
-        .tab-button.active {
-            background-color: #4B6CB7;
-            color: white;
-        }
-
-        /* Content Styles */
-        .tab-content {
-            display: none;
-            opacity: 0;
-            transition: all 0.3s ease;
-            transform: translateY(20px);
-        }
-
-        .tab-content.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* About Section */
-        .about-content {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .skill-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .language-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .language-list li {
-            padding: 8px 16px;
-            border-radius: 20px;
-            color: white;
-            list-style: none;
-            transition: transform 0.3s ease;
-            cursor: default;
-        }
-
-        .language-list li:hover {
-            transform: translateX(5px);
-        }
-
-        /* Language Colors */
-        .python { background: #3572A5; }
-        .cpp { background: #f34b7d; }
-        .csharp { background: #178600; }
-        .html { background: #e34c26; }
-        .css { background: #563d7c; }
-        .java { background: #b07219; }
-
-        /* Spacer Image */
-        .spacer-image {
-            width: auto;
-            max-height: 200px;
-            display: block;
-            margin: 20px auto;
-            transition: transform 0.3s ease;
-        }
-
-        .spacer-image:hover {
-            transform: scale(1.05);
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #182848 0%, #4B6CB7 100%);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5em;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-        }
-
-        /* Scroll to Top Button */
-        .scroll-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-3px);
-            background: var(--secondary-color);
-        }
-
-        /* Error Handling Styles */
-        .error-message {
-            background: #ff5757;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            margin: 10px 0;
-            display: none;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .language-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .tab-container {
-                padding: 10px;
-            }
-            
-            .about-content, .skill-card {
-                padding: 20px;
-            }
-            
-            .profile-img {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .tabs {
-                flex-direction: column;
-            }
-            
-            .tab-button {
-                width: 100%;
-            }
-        }
-    </style>
+    <meta name="description" content="Blake DeSouza - Computer Science Student at Troy University">
+    <title>Blake DeSouza | Portfolio</title>
+    <link rel="stylesheet" href="css/indexcss.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
 </head>
 <body>
-    <!-- Loading Screen -->
     <div class="loading" id="loadingScreen">
         <div class="loading-spinner"></div>
     </div>
 
-    <!-- Theme Toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <i class="fas fa-moon"></i>
     </button>
 
-    <!-- Scroll to Top Button -->
     <button id="scrollToTop" class="scroll-top" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <header>
         <div class="profile-container">
-            <img src="images/me.png" alt="Blake DeSouza" class="profile-img" id="profileImage">
+            <img src="images/me.png" alt="Blake DeSouza" class="profile-img" id="profileImage" loading="eager">
         </div>
         <h1>Blake DeSouza</h1>
         <p>Computer Science Student at Troy University</p>
     </header>
 
-    <div class="main-content">
+    <main class="main-content">
         <div class="tab-container">
-            <div class="tabs">
-                <button class="tab-button active" onclick="openTab('about')" aria-label="About section">About Me</button>
-                <button class="tab-button" onclick="openTab('skills')" aria-label="Skills section">Skills</button>
-            </div>
+            <nav class="tabs" role="tablist">
+                <button class="tab-button active" onclick="openTab('about')" aria-selected="true" role="tab" aria-controls="about">About Me</button>
+                <button class="tab-button" onclick="openTab('skills')" aria-selected="false" role="tab" aria-controls="skills">Skills</button>
+            </nav>
 
-            <div id="about" class="tab-content active">
+            <div id="about" class="tab-content active" role="tabpanel">
                 <div class="about-content">
                     <p>Hello! I'm Blake, a student currently enrolled in Troy University studying Computer Science. I specialize in Python/C#/C++, HTML and CSS, and I am currently learning Java. I'm always looking to learn more languages to add to my toolbelt!</p>
                     
-                    <h3 style="color: var(--primary-color); margin: 20px 0;">Achievements & Certifications</h3>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 10px;">• National English Honor Society – Sigma Kappa Delta (2020)</li>
-                        <li style="margin-bottom: 10px;">• International Honor Society – Phi Theta Kappa (2020)</li>
-                        <li style="margin-bottom: 10px;">• Microsoft Technology Associate Security Fundamentals Certification (2018)</li>
-                        <li style="margin-bottom: 10px;">• Microsoft Technology Associate HTML and CSS Programming Certification (2018)</li>
-                        <li style="margin-bottom: 10px;">• Future Business Leaders of America member (2015 – 2018)</li>
-                        <li style="margin-bottom: 10px;">• Created and edited web-based Google Document for non-profit fundraising (2017)</li>
-                        <li style="margin-bottom: 10px;">• Microsoft Office Specialist Access Certification (2017)</li>
+                    <h3>Achievements & Certifications</h3>
+                    <ul class="achievement-list">
+                        <li>National English Honor Society – Sigma Kappa Delta (2020)</li>
+                        <li>International Honor Society – Phi Theta Kappa (2020)</li>
+                        <li>Microsoft Technology Associate Security Fundamentals Certification (2018)</li>
+                        <li>Microsoft Technology Associate HTML and CSS Programming Certification (2018)</li>
+                        <li>Future Business Leaders of America member (2015 – 2018)</li>
+                        <li>Created and edited web-based Google Document for non-profit fundraising (2017)</li>
+                        <li>Microsoft Office Specialist Access Certification (2017)</li>
                     </ul>
                 </div>
             </div>
 
-            <div id="skills" class="tab-content">
+            <div id="skills" class="tab-content" role="tabpanel">
                 <div class="skills-grid">
                     <div class="skill-card">
                         <h3><i class="fas fa-code"></i> Programming Languages I am Proficient in</h3>
@@ -432,141 +68,32 @@
                     </div>
                     <div class="skill-card">
                         <h3><i class="fas fa-cogs"></i> Technical Skills</h3>
-                        <ul style="list-style: none; margin-top: 20px;">
-                            <li style="margin-bottom: 10px;">• Building custom computer systems from component selection to assembly</li>
-                            <li style="margin-bottom: 10px;">• Computer repair and maintenance for both hardware and software issues</li>
-                            <li style="margin-bottom: 10px;">• Software troubleshooting and debugging</li>
-                            <li style="margin-bottom: 10px;">• Hardware diagnostics and problem resolution</li>
-                            <li style="margin-bottom: 10px;">• Virtual Machine creation and management</li>
-                            <li style="margin-bottom: 10px;">• Server administration for various purposes including gaming and storage solutions</li>
+                        <ul class="tech-skills-list">
+                            <li>Building custom computer systems from component selection to assembly</li>
+                            <li>Computer repair and maintenance for both hardware and software issues</li>
+                            <li>Software troubleshooting and debugging</li>
+                            <li>Hardware diagnostics and problem resolution</li>
+                            <li>Virtual Machine creation and management</li>
+                            <li>Server administration for various purposes including gaming and storage solutions</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <img src="images/diego.png" alt="Diego" class="spacer-image" id="spacerImage">
-    </div>
+        <img src="images/diego.png" alt="Diego" class="spacer-image" id="spacerImage" loading="lazy">
+    </main>
 
     <footer>
         <h2>Contact Me</h2>
         <p>I'm always interested in new opportunities. Feel free to reach out!</p>
         <div class="social-links">
-            <a href="https://github.com/blakedesouza" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/blake-desouza-452595346/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/blakedesouza" target="_blank" rel="noopener" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/blake-desouza-452595346/" target="_blank" rel="noopener" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:blakedesouza@protonmail.com" aria-label="Email Me"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
 
-    <script>
-        // Loading Screen
-        window.addEventListener('load', function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            setTimeout(() => {
-                loadingScreen.style.opacity = '0';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, 1000);
-        });
-
-        // Error Handling for Images
-        function handleImageError(imgElement, fallbackText) {
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.textContent = `Failed to load ${fallbackText}`;
-            imgElement.parentNode.insertBefore(errorDiv, imgElement.nextSibling);
-            errorDiv.style.display = 'block';
-        }
-
-        document.getElementById('profileImage').onerror = function() {
-            handleImageError(this, 'profile image');
-        };
-
-        document.getElementById('spacerImage').onerror = function() {
-            handleImageError(this, 'spacer image');
-        };
-
-        // Tab Functionality
-        function openTab(tabName) {
-            const tabContents = document.getElementsByClassName('tab-content');
-            for (let content of tabContents) {
-                content.classList.remove('active');
-                content.style.display = 'none';
-            }
-
-            const tabButtons = document.getElementsByClassName('tab-button');
-            for (let button of tabButtons) {
-                button.classList.remove('active');
-            }
-
-            const selectedTab = document.getElementById(tabName);
-            selectedTab.style.display = 'block';
-            setTimeout(() => {
-                selectedTab.classList.add('active');
-            }, 50);
-            
-            event.currentTarget.classList.add('active');
-
-            // Update URL hash without scrolling
-            history.pushState(null, null, `#${tabName}`);
-        }
-
-        // Handle URL hash on page load
-        window.addEventListener('load', () => {
-            const hash = window.location.hash.slice(1);
-            if (hash && ['about', 'skills'].includes(hash)) {
-                openTab(hash);
-            }
-        });
-
-        // Dark Mode Toggle with Local Storage
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            themeIcon.classList.toggle('fa-moon');
-            themeIcon.classList.toggle('fa-sun');
-            
-            // Save theme preference
-            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-        });
-
-        // Scroll to Top Functionality
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-
-        window.onscroll = function() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        };
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Add smooth scrolling to all links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <script src="js/indexscripts.js"></script>
 </body>
 </html>
