@@ -94,13 +94,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateTheme(isDark) {
         if (isDark) {
+            document.documentElement.classList.add('dark-mode');
             document.body.classList.add('dark-mode');
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
+            document.querySelectorAll('header, footer').forEach(el => {
+                el.classList.add('dark-mode');
+            });
         } else {
+            document.documentElement.classList.remove('dark-mode');
             document.body.classList.remove('dark-mode');
             themeIcon.classList.remove('fa-sun');
             themeIcon.classList.add('fa-moon');
+            document.querySelectorAll('header, footer').forEach(el => {
+                el.classList.remove('dark-mode');
+            });
         }
     }
     

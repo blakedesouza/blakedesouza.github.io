@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blake DeSouza - Personal Projects">
+    <title>Blake DeSouza | Personal Projects</title>
+    <link rel="stylesheet" href="css/indexcss.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+</head>
+<body>
+    <div class="loading" id="loadingScreen">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <button id="scrollToTop" class="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <header>
+        <div class="profile-container">
+            <img src="images/me.png" alt="Blake DeSouza" class="profile-img" id="profileImage" loading="eager">
+        </div>
+        <div class="header-content">
+            <h1>Blake DeSouza</h1>
+            <p>Computer Science Student at Troy University</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="tab-container">
+            <nav class="tabs">
+                <a href="index.html" class="tab-button">Back to Home</a>
+            </nav>
+
+            <div class="projects-content">
+                <h2>Personal Projects</h2>
+                <p class="projects-intro">Here are some of the projects I've worked on. Each demonstrates my skills and passion for programming.</p>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Project 1</h3>
+                        <p>Description of project 1. This is a placeholder for your actual project description.</p>
+                        <div class="project-tags">
+                            <span class="tag python">Python</span>
+                            <span class="tag">Web</span>
+                        </div>
+                        <a href="#" class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Project 2</h3>
+                        <p>Description of project 2. This is a placeholder for your actual project description.</p>
+                        <div class="project-tags">
+                            <span class="tag csharp">C#</span>
+                            <span class="tag">Game</span>
+                        </div>
+                        <a href="#" class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Project 3</h3>
+                        <p>Description of project 3. This is a placeholder for your actual project description.</p>
+                        <div class="project-tags">
+                            <span class="tag html">HTML</span>
+                            <span class="tag css">CSS</span>
+                            <span class="tag">Website</span>
+                        </div>
+                        <a href="#" class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <h2>Contact Me</h2>
+        <p>I'm always interested in new opportunities. Feel free to reach out!</p>
+        <div class="social-links">
+            <a href="https://github.com/blakedesouza" target="_blank" rel="noopener" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/blake-desouza-452595346/" target="_blank" rel="noopener" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:blakedesouza@protonmail.com" aria-label="Email Me"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <script src="js/indexscripts.js"></script>
+</body>
+</html>
