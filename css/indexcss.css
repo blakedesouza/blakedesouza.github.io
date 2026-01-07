@@ -11,7 +11,7 @@
     --text-light: #64748b;
     --bg-color: #f1f5f9;
     --card-bg: rgba(255, 255, 255, 0.8);
-    --header-bg: linear-gradient(-45deg, #6366f1, #8b5cf6, #06b6d4, #6366f1);
+    --header-bg: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
     --box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     --box-shadow-hover: 0 8px 30px rgba(99, 102, 241, 0.2);
     --transition-fast: all 0.2s ease;
@@ -29,7 +29,7 @@
     --text-light: #94a3b8;
     --bg-color: #0f172a;
     --card-bg: rgba(30, 41, 59, 0.8);
-    --header-bg: linear-gradient(-45deg, #4f46e5, #7c3aed, #0891b2, #4f46e5);
+    --header-bg: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
     --box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     --box-shadow-hover: 0 8px 30px rgba(129, 140, 248, 0.2);
 }
@@ -125,8 +125,6 @@ body {
 
 header {
     background: var(--header-bg);
-    background-size: 300% 300%;
-    animation: gradientShift 10s ease infinite;
     color: white;
     padding: 60px 30px;
     display: flex;
@@ -666,8 +664,6 @@ header {
 
 footer {
     background: var(--header-bg);
-    background-size: 300% 300%;
-    animation: gradientShift 10s ease infinite;
     color: white;
     padding: 50px 20px;
     text-align: center;
