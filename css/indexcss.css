@@ -1,37 +1,8 @@
-.header-content h1 {
-    margin-bottom: 5px;
-    font-size: 2.4rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
+/* ==========================================================================
+   CSS Variables
+   ========================================================================== */
 
-.header-content p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    margin-top: 5px;
-}body.dark-mode .tab-container,
-body.dark-mode .about-content,
-body.dark-mode .projects-content,
-body.dark-mode .skill-card,
-body.dark-mode .project-card {
-    background: #2d2d2d;
-    color: #ffffff;
-}body.dark-mode .tab-button.active {
-    background-color: #4B6CB7;
-    color: white;
-}
-
-body.dark-mode .projects-link {
-    background-color: #2E4172;
-    color: white;
-}
-
-body.dark-mode .tab-button:hover {
-    background: rgba(255, 255, 255, 0.1);
-}.dark-mode body, .dark-mode header, .dark-mode footer {
-    background: linear-gradient(90deg, #5D2906 0%, #A67C00 100%);
-}:root {
+:root {
     --primary-color: #8B4513;
     --secondary-color: #DAA520;
     --text-color: #333;
@@ -52,29 +23,19 @@ body.dark-mode .tab-button:hover {
     --card-bg: #2d2d2d;
 }
 
-.dark-mode header,
-.dark-mode footer,
-html {
-    height: 100%;
-}
-
-body, header, footer {
-    background: linear-gradient(90deg, #8B4513 0%, #DAA520 100%);
-}
-
-.dark-mode body, .dark-mode header, .dark-mode footer {
-    background: linear-gradient(90deg, #192548 0%, #3F5C6E 100%);
-}
-
-.dark-mode body {
-    background: linear-gradient(135deg, var(--bg-color) 0%, #2a2a3a 100%);
-}
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     transition: background-color 0.3s, color 0.3s;
+}
+
+html {
+    height: 100%;
 }
 
 body {
@@ -84,7 +45,16 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(90deg, #8B4513 0%, #DAA520 100%);
 }
+
+.dark-mode body {
+    background: linear-gradient(135deg, var(--bg-color) 0%, #2a2a3a 100%);
+}
+
+/* ==========================================================================
+   Keyframe Animations
+   ========================================================================== */
 
 @keyframes spin {
     to { transform: rotate(360deg); }
@@ -112,6 +82,10 @@ body {
     }
 }
 
+/* ==========================================================================
+   Loading Screen
+   ========================================================================== */
+
 .loading {
     position: fixed;
     inset: 0;
@@ -132,7 +106,12 @@ body {
     animation: spin 1s linear infinite;
 }
 
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
 header {
+    background: linear-gradient(90deg, #8B4513 0%, #DAA520 100%);
     color: white;
     padding: 40px 30px;
     position: relative;
@@ -142,6 +121,10 @@ header {
     gap: 40px;
 }
 
+.dark-mode header {
+    background: linear-gradient(90deg, #192548 0%, #3F5C6E 100%);
+}
+
 .profile-container {
     position: relative;
     display: inline-block;
@@ -149,10 +132,6 @@ header {
     padding: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     margin: 0;
-}
-
-.header-content {
-    text-align: left;
 }
 
 .profile-img {
@@ -168,7 +147,30 @@ header {
     transform: scale(1.05);
 }
 
-.theme-toggle, .scroll-top {
+.header-content {
+    text-align: left;
+}
+
+.header-content h1 {
+    margin-bottom: 5px;
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   Fixed Buttons (Theme Toggle & Scroll to Top)
+   ========================================================================== */
+
+.theme-toggle,
+.scroll-top {
     position: fixed;
     width: 40px;
     height: 40px;
@@ -213,13 +215,9 @@ header {
     background: #2E4172;
 }
 
-body.dark-mode .scroll-top {
-    background: #4B6CB7;
-}
-
-body.dark-mode .scroll-top:hover {
-    background: #2E4172;
-}
+/* ==========================================================================
+   Main Content & Tab Container
+   ========================================================================== */
 
 .main-content {
     flex: 1;
@@ -239,6 +237,7 @@ body.dark-mode .scroll-top:hover {
 
 .dark-mode .tab-container {
     background: #2d2d2d;
+    color: #ffffff;
 }
 
 .tabs {
@@ -265,13 +264,31 @@ body.dark-mode .scroll-top:hover {
     background: rgba(75, 108, 183, 0.1);
 }
 
+.tab-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
 .projects-link {
     background-color: var(--secondary-color);
     color: white;
 }
 
-.tab-button.active {
-    background-color: var(--primary-color);
+.dark-mode .tab-button {
+    color: var(--text-color);
+}
+
+.dark-mode .tab-button.active {
+    background-color: #4B6CB7;
+    color: white;
+}
+
+.dark-mode .tab-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .projects-link {
+    background-color: #2E4172;
     color: white;
 }
 
@@ -287,6 +304,10 @@ body.dark-mode .scroll-top:hover {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ==========================================================================
+   Content Cards (About, Skills, Projects)
+   ========================================================================== */
 
 .about-content,
 .projects-content,
@@ -313,10 +334,6 @@ body.dark-mode .scroll-top:hover {
     margin: 20px 0;
 }
 
-body.dark-mode .about-content h3 {
-    color: #79CBCA;
-}
-
 .achievement-list {
     list-style: none;
 }
@@ -334,32 +351,18 @@ body.dark-mode .about-content h3 {
     color: var(--primary-color);
 }
 
-.skills-grid,
-.projects-grid {
+/* ==========================================================================
+   Skills Section
+   ========================================================================== */
+
+.skills-grid {
     display: grid;
+    grid-template-columns: 1fr;
     gap: 20px;
     animation: fadeIn 0.6s ease-out;
 }
 
-.skills-grid {
-    grid-template-columns: 1fr;
-}
-
-.projects-grid {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.skill-card,
-.project-card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 30px;
-    box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease;
-}
-
-.skill-card:hover,
-.project-card:hover {
+.skill-card:hover {
     transform: translateY(-5px);
 }
 
@@ -384,56 +387,13 @@ body.dark-mode .about-content h3 {
     transform: translateX(5px);
 }
 
-.projects-intro {
-    margin-bottom: 30px;
-}
-
-.project-tags {
-    margin: 15px 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
+/* Language Colors */
 .python { background: #3572A5; }
 .cpp { background: #f34b7d; }
 .csharp { background: #178600; }
 .html { background: #e34c26; }
 .css { background: #563d7c; }
 .java { background: #b07219; }
-
-.tag {
-    padding: 4px 10px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    color: white;
-    background: #2E4172;
-}
-
-body.dark-mode .tag {
-    background: #4B6CB7;
-}
-
-.project-link {
-    display: inline-block;
-    margin-top: 10px;
-    color: #79CBCA;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.project-link:hover {
-    color: #4B6CB7;
-}
-
-body.dark-mode .project-link {
-    color: #79CBCA;
-}
-
-body.dark-mode .project-link:hover {
-    color: #ffffff;
-}
 
 .tech-skills-list {
     list-style: none;
@@ -453,6 +413,65 @@ body.dark-mode .project-link:hover {
     color: var(--primary-color);
 }
 
+/* ==========================================================================
+   Projects Section
+   ========================================================================== */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.projects-intro {
+    margin-bottom: 30px;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-tags {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: white;
+    background: #2E4172;
+}
+
+.dark-mode .tag {
+    background: #4B6CB7;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #79CBCA;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.project-link:hover {
+    color: #4B6CB7;
+}
+
+.dark-mode .project-link:hover {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Spacer Image (Diego the Cat)
+   ========================================================================== */
+
 .spacer-image {
     max-width: 100%;
     max-height: 200px;
@@ -465,11 +484,20 @@ body.dark-mode .project-link:hover {
     transform: scale(1.05);
 }
 
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
 footer {
+    background: linear-gradient(90deg, #8B4513 0%, #DAA520 100%);
     color: white;
     padding: 30px 20px;
     text-align: center;
     margin-top: auto;
+}
+
+.dark-mode footer {
+    background: linear-gradient(90deg, #192548 0%, #3F5C6E 100%);
 }
 
 .social-links {
@@ -490,6 +518,10 @@ footer {
     transform: scale(1.2);
 }
 
+/* ==========================================================================
+   Error Messages
+   ========================================================================== */
+
 .error-message {
     background: #ff5757;
     color: white;
@@ -500,42 +532,46 @@ footer {
     animation: slideIn 0.3s ease-out;
 }
 
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
         text-align: center;
         gap: 15px;
     }
-    
+
     .header-content {
         text-align: center;
     }
-    
-    .skills-grid, 
-    .language-list,
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .tab-container {
-        padding: 10px;
-    }
-    
-    .about-content, 
-    .skill-card {
-        padding: 20px;
-    }
-    
+
     .profile-img {
         width: 130px;
         height: 130px;
     }
-    
+
+    .tab-container {
+        padding: 10px;
+    }
+
     .tabs {
         flex-direction: column;
     }
-    
+
     .tab-button {
         width: 100%;
+    }
+
+    .about-content,
+    .skill-card {
+        padding: 20px;
+    }
+
+    .skills-grid,
+    .language-list,
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
 }
