@@ -394,6 +394,8 @@ header {
 .html { background: #e34c26; }
 .css { background: #563d7c; }
 .java { background: #b07219; }
+.lua { background: #000080; }
+.git { background: #F05032; }
 
 .tech-skills-list {
     list-style: none;
