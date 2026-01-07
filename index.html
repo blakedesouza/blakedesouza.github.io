@@ -35,24 +35,64 @@
         <div class="tab-container">
             <nav class="tabs" role="tablist">
                 <button class="tab-button active" onclick="openTab('about')" aria-selected="true" role="tab" aria-controls="about">About Me</button>
+                <button class="tab-button" onclick="openTab('experience')" aria-selected="false" role="tab" aria-controls="experience">Experience</button>
                 <button class="tab-button" onclick="openTab('skills')" aria-selected="false" role="tab" aria-controls="skills">Skills</button>
                 <a href="personalprojects.html" class="tab-button projects-link">Personal Projects</a>
             </nav>
 
             <div id="about" class="tab-content active" role="tabpanel">
                 <div class="about-content">
-                    <p>Hello! I'm Blake, a student currently enrolled in Troy University studying Computer Science. I specialize in Python/C#/C++, HTML and CSS, and I am currently learning Java. I'm always looking to learn more languages to add to my toolbelt!</p>
-                    
-                    <h3>Achievements & Certifications</h3>
+                    <p>Hello! I'm Blake, an IT Support Specialist and System Administrator with a background in Computer Science from Troy University. I specialize in Python, C#, C++, and web development. I'm passionate about solving technical problems and always looking to expand my skillset.</p>
+
+                    <h3>Certifications</h3>
+                    <ul class="achievement-list">
+                        <li>Microsoft Technology Associate: Security Fundamentals (2018)</li>
+                        <li>Microsoft Technology Associate: HTML and CSS Programming (2018)</li>
+                        <li>Microsoft Office Specialist: Access (2017)</li>
+                    </ul>
+
+                    <h3>Achievements</h3>
                     <ul class="achievement-list">
                         <li>National English Honor Society – Sigma Kappa Delta (2020)</li>
                         <li>International Honor Society – Phi Theta Kappa (2020)</li>
-                        <li>Microsoft Technology Associate Security Fundamentals Certification (2018)</li>
-                        <li>Microsoft Technology Associate HTML and CSS Programming Certification (2018)</li>
                         <li>Future Business Leaders of America member (2015 – 2018)</li>
-                        <li>Created and edited web-based Google Document for non-profit fundraising (2017)</li>
-                        <li>Microsoft Office Specialist Access Certification (2017)</li>
                     </ul>
+                </div>
+            </div>
+
+            <div id="experience" class="tab-content" role="tabpanel">
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <h3><i class="fas fa-briefcase"></i> Independent Software Developer</h3>
+                            <span class="experience-date">Self-Employed</span>
+                        </div>
+                        <p class="experience-description">Developing software solutions and applications independently. Working on various projects involving Python, C#, and web technologies.</p>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <h3><i class="fas fa-server"></i> Home Lab Administrator</h3>
+                            <span class="experience-date">Self-Employed</span>
+                        </div>
+                        <p class="experience-description">Managing personal server infrastructure for various purposes including gaming servers, storage solutions, and virtualization environments. Hands-on experience with Linux, Windows Server, and network configuration.</p>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <h3><i class="fas fa-graduation-cap"></i> Troy University</h3>
+                            <span class="experience-date">Education</span>
+                        </div>
+                        <p class="experience-description">Studied Computer Science, gaining strong foundations in programming, algorithms, and software development principles.</p>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <h3><i class="fas fa-university"></i> Jefferson State Community College</h3>
+                            <span class="experience-date">Education</span>
+                        </div>
+                        <p class="experience-description">Completed foundational coursework and earned academic honors including Phi Theta Kappa and Sigma Kappa Delta membership.</p>
+                    </div>
                 </div>
             </div>
 

@@ -416,6 +416,78 @@ header {
 }
 
 /* ==========================================================================
+   Experience Section
+   ========================================================================== */
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.experience-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.dark-mode .experience-card {
+    background: #2d2d2d;
+    color: #ffffff;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.experience-header h3 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.experience-header h3 i {
+    color: #79CBCA;
+}
+
+.experience-date {
+    background: var(--secondary-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.experience-description {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.dark-mode .experience-description {
+    color: #cccccc;
+}
+
+/* ==========================================================================
    Projects Section
    ========================================================================== */
 
@@ -567,13 +639,20 @@ footer {
     }
 
     .about-content,
-    .skill-card {
+    .skill-card,
+    .experience-card {
         padding: 20px;
     }
 
     .skills-grid,
     .language-list,
-    .projects-grid {
+    .projects-grid,
+    .experience-grid {
         grid-template-columns: 1fr;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

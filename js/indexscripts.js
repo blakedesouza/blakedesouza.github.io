@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const hash = window.location.hash.slice(1);
-    if (hash && ['about', 'skills'].includes(hash)) {
+    if (hash && ['about', 'experience', 'skills'].includes(hash)) {
         openTab(hash);
     }
 
