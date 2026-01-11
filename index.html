@@ -52,7 +52,7 @@
                 <button class="tab-button active" onclick="openTab('about')" aria-selected="true" role="tab" aria-controls="about">About Me</button>
                 <button class="tab-button" onclick="openTab('experience')" aria-selected="false" role="tab" aria-controls="experience">Experience</button>
                 <button class="tab-button" onclick="openTab('skills')" aria-selected="false" role="tab" aria-controls="skills">Skills</button>
-                <a href="personalprojects.html" class="tab-button projects-link">Personal Projects</a>
+                <button class="tab-button" onclick="openTab('projects')" aria-selected="false" role="tab" aria-controls="projects">Projects</button>
             </nav>
 
             <div id="about" class="tab-content active" role="tabpanel">
@@ -137,6 +137,24 @@
                             <li>Software troubleshooting and debugging</li>
                             <li>Hardware diagnostics and problem resolution</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="projects" class="tab-content" role="tabpanel">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3><i class="fas fa-warehouse"></i> Warehouse Manager</h3>
+                        <p>A full-stack web application for managing warehouse workers, shifts, and staffing levels in real-time. Features live dashboards, smart auto-assignment to understaffed locations, dark mode, keyboard shortcuts, and more.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">SQLAlchemy</span>
+                            <span class="tag">Chart.js</span>
+                        </div>
+                        <a href="https://github.com/blakedesouza/personal-projects/tree/master/warehouse-manager" class="project-link" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
                     </div>
                 </div>
             </div>
