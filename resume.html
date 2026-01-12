@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blake DeSouza - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .resume {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            padding: 0.5in 0.6in;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .resume {
+                padding: 0;
+                max-width: none;
+            }
+            @page {
+                margin: 0.5in;
+                size: letter;
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            font-size: 11px;
+            color: #555;
+        }
+
+        .contact-info a {
+            color: #3d7a9e;
+            text-decoration: none;
+        }
+
+        .contact-info .separator {
+            margin: 0 8px;
+            color: #3d7a9e;
+        }
+
+        .remote-tag {
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #3d7a9e;
+            letter-spacing: 0.5px;
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #3d7a9e;
+            margin-bottom: 12px;
+        }
+
+        /* Professional Summary */
+        .summary {
+            font-size: 11px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .skill-item {
+            display: flex;
+            padding-left: 10px;
+            border-left: 3px solid #3d7a9e;
+        }
+
+        .skill-item h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 3px;
+        }
+
+        .skill-item p {
+            font-size: 10px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* Education */
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .education-item h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .education-item .school {
+            font-size: 10px;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        .education-item .date {
+            font-size: 10px;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Projects */
+        .project {
+            margin-bottom: 14px;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+        }
+
+        .project h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .project .date {
+            font-size: 10px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .project ul {
+            margin-left: 18px;
+            font-size: 10px;
+        }
+
+        .project li {
+            margin-bottom: 3px;
+            line-height: 1.4;
+        }
+
+        /* Certifications */
+        .cert-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .cert-item {
+            font-size: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .cert-item .checkmark {
+            color: #3d7a9e;
+            font-weight: bold;
+        }
+
+        /* Additional Experience */
+        .additional-exp {
+            margin-bottom: 12px;
+        }
+
+        .additional-exp .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .additional-exp h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .additional-exp .company {
+            font-size: 10px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .additional-exp .date {
+            font-size: 10px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .additional-exp ul {
+            margin-left: 18px;
+            font-size: 10px;
+        }
+
+        .additional-exp li {
+            margin-bottom: 2px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <!-- Header -->
+        <header class="header">
+            <h1>BLAKE DESOUZA</h1>
+            <div class="contact-info">
+                848 Riverchase Parkway West, Hoover, AL 35244
+                <span class="separator">|</span>
+                (205) 919-9511
+                <br>
+                <a href="mailto:blakedesouza@protonmail.com">blakedesouza@protonmail.com</a>
+                <br>
+                <a href="https://www.linkedin.com/in/blake-desouza-452595346/">LinkedIn Profile</a>
+                <span class="separator">|</span>
+                <a href="https://blakedesouza.github.io/">Portfolio Website</a>
+            </div>
+            <div class="remote-tag">Seeking Full Remote Opportunities</div>
+        </header>
+
+        <!-- Professional Summary -->
+        <section class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary">
+                Recent Computer Science graduate with hands-on experience in system administration, server management, and technical troubleshooting. Strong foundation in hardware diagnostics, virtual machine management, network configuration, and process automation through scripting. Proven ability to solve complex technical problems independently. Self-motivated with excellent written communication skills and experience working autonomously in remote environments. Passionate about problem-solving and contributing to team success.
+            </p>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div>
+                        <h4>Operating Systems</h4>
+                        <p>Windows, Linux</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Server Administration</h4>
+                        <p>FTP servers, Plex media servers, dedicated game servers, remote access configuration</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Virtualization</h4>
+                        <p>VM creation and management, resource allocation, network configuration</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Hardware</h4>
+                        <p>Custom PC building, hardware diagnostics and repair, component selection</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Programming Languages</h4>
+                        <p>Python, C++, C#, Java, HTML, CSS</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Command Line & Scripting</h4>
+                        <p>PowerShell, Bash, CMD, shell scripting for automation and server management</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Networking</h4>
+                        <p>TCP/IP, DNS, DHCP, port forwarding, firewall configuration, VPN setup and usage</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Remote Administration</h4>
+                        <p>Windows Remote Desktop, RustDesk, Parsec, SSH, FileZilla, WinSCP</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>User & Access Management</h4>
+                        <p>Active Directory, user account administration, permissions management</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Collaboration & Communication</h4>
+                        <p>Community platform administration, user moderation, team coordination tools</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Database & Tools</h4>
+                        <p>SQL Server, Microsoft Access, Git, Adobe Illustrator</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Cloud Platforms</h4>
+                        <p>Google Cloud Platform</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Monitoring & Diagnostics</h4>
+                        <p>HWiNFO, MSI Afterburner, system performance monitoring</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div>
+                        <h4>Documentation</h4>
+                        <p>Technical writing, process documentation, creating SOPs</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <div>
+                    <h4>Bachelor of Science in Computer Science</h4>
+                    <div class="school">Troy University</div>
+                </div>
+                <span class="date">August 2025</span>
+            </div>
+            <div class="education-item">
+                <div>
+                    <h4>Associate of Science Degree</h4>
+                    <div class="school">Jefferson State Community College, Hoover, Alabama</div>
+                </div>
+                <span class="date">December 2021</span>
+            </div>
+        </section>
+
+        <!-- Projects & Hands-On Experience -->
+        <section class="section">
+            <h2 class="section-title">Projects & Hands-On Experience</h2>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>Personal Server Administration & Homelab</h4>
+                    <span class="date">Ongoing</span>
+                </div>
+                <ul>
+                    <li>Managed and maintained multiple Linux-based dedicated game servers with custom configurations, mod integration, and ongoing performance optimization</li>
+                    <li>Deployed FTP and media streaming server (Plex) using repurposed hardware, including network configuration and remote access setup</li>
+                    <li>Performed remote system administration and maintenance using remote desktop protocols (RDP, RustDesk, Parsec) and SSH for ongoing server management</li>
+                    <li>Configured and troubleshot complex server environments including Source engine servers with extensive customization and modded Minecraft servers</li>
+                    <li>Utilized FTP clients (FileZilla, WinSCP) for file transfers and server configuration management</li>
+                    <li>Implemented user permission systems and managed server security, backups, and uptime monitoring</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>GUI Automation & Computer Vision Project</h4>
+                    <span class="date">2024</span>
+                </div>
+                <ul>
+                    <li>Developed Python automation script utilizing PyAutoGUI for GUI interaction and optical character recognition (OCR) for visual state detection</li>
+                    <li>Implemented image recognition algorithms to identify and classify visual elements in real-time</li>
+                    <li>Created decision-making logic to analyze detected elements and execute appropriate automated responses</li>
+                    <li>Designed efficient automation workflow for repetitive task completion with high accuracy</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>Virtual Machine Management</h4>
+                    <span class="date">Ongoing</span>
+                </div>
+                <ul>
+                    <li>Created and configured virtual machines for testing software in isolated environments</li>
+                    <li>Managed multiple VM instances with different operating systems and configurations</li>
+                    <li>Troubleshot VM performance issues including resource allocation and network connectivity</li>
+                    <li>Used VMs for software testing and experimentation without risking primary system stability</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>Computer Hardware & Technical Support</h4>
+                    <span class="date">Ongoing</span>
+                </div>
+                <ul>
+                    <li>Built custom computer systems from component selection through assembly and configuration</li>
+                    <li>Performed hardware upgrades and replacements including CPUs, GPUs, RAM, power supplies, and cooling systems</li>
+                    <li>Executed professional cable management for optimal airflow and system organization</li>
+                    <li>Diagnosed and resolved hardware and software issues for personal and peer systems</li>
+                    <li>Conducted system maintenance, optimization, and performance troubleshooting</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Certifications & Achievements -->
+        <section class="section">
+            <h2 class="section-title">Certifications & Achievements</h2>
+            <div class="cert-list">
+                <div class="cert-item">
+                    <span class="checkmark">&#10003;</span>
+                    <span>Microsoft Technology Associate Security Fundamentals Certification (2018)</span>
+                </div>
+                <div class="cert-item">
+                    <span class="checkmark">&#10003;</span>
+                    <span>Microsoft Technology Associate HTML and CSS Programming Certification (2018)</span>
+                </div>
+                <div class="cert-item">
+                    <span class="checkmark">&#10003;</span>
+                    <span>Microsoft Office Specialist Access Certification (2017)</span>
+                </div>
+                <div class="cert-item">
+                    <span class="checkmark">&#10003;</span>
+                    <span>National English Honor Society - Sigma Kappa Delta (2020)</span>
+                </div>
+                <div class="cert-item">
+                    <span class="checkmark">&#10003;</span>
+                    <span>International Honor Society - Phi Theta Kappa (2020)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Experience -->
+        <section class="section">
+            <h2 class="section-title">Additional Experience</h2>
+
+            <div class="additional-exp">
+                <div class="exp-header">
+                    <h4>Independent Consultant - Job Shadow</h4>
+                    <span class="date">February 2017</span>
+                </div>
+                <div class="company">RMB Solutions LLC</div>
+                <ul>
+                    <li>Utilized Microsoft Excel to prepare analysis for data integrity validation</li>
+                    <li>Assisted with problem resolution analysis utilizing mainframe and intranet reporting</li>
+                </ul>
+            </div>
+
+            <div class="additional-exp">
+                <div class="exp-header">
+                    <h4>Job Shadow</h4>
+                    <span class="date">February 2016</span>
+                </div>
+                <div class="company">Saks Fifth Avenue, New York</div>
+                <ul>
+                    <li>Supported Enterprise Point of Sale data validation for Sales Audit</li>
+                    <li>Assisted with analysis for problem resolution utilizing mainframe, intranet, and Microsoft applications</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
