@@ -346,8 +346,11 @@ header {
     flex-direction: column;
 }
 
-.project-card .project-link {
+.project-card .project-links {
     margin-top: auto;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .about-content:hover,
