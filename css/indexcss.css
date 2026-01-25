@@ -571,3 +571,91 @@ a:hover {
     font-size: 0.875rem;
     margin-bottom: var(--space-sm);
 }
+
+/* ==========================================================================
+   Contact Section
+   ========================================================================== */
+
+.contact-content {
+    text-align: center;
+}
+
+.contact-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+}
+
+.contact-text {
+    color: var(--text-muted);
+    margin-bottom: var(--space-lg);
+}
+
+.contact-email {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: var(--space-lg);
+    display: block;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-lg);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+}
+
+.social-link {
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    transition: color var(--transition);
+}
+
+.social-link:hover {
+    color: var(--accent);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: var(--space-lg);
+    text-align: center;
+    position: relative;
+}
+
+.footer-copy {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+.footer-diego {
+    position: absolute;
+    right: var(--space-lg);
+    bottom: var(--space-md);
+    width: 60px;
+    opacity: 0.4;
+    transition: opacity var(--transition);
+    cursor: default;
+}
+
+.footer-diego:hover {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .footer-diego {
+        position: static;
+        margin: var(--space-md) auto 0;
+    }
+}
