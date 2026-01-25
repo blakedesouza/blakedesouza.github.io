@@ -444,3 +444,130 @@ a:hover {
 .skills-list li:last-child {
     border-bottom: none;
 }
+
+/* ==========================================================================
+   Projects Section
+   ========================================================================== */
+
+.projects-featured {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.project-card {
+    padding: var(--space-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: box-shadow var(--transition);
+}
+
+.project-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.dark-mode .project-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.project-card.featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .project-card.featured {
+        grid-template-columns: 1fr;
+    }
+}
+
+.project-image {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+.project-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.project-name i {
+    color: var(--accent);
+}
+
+.project-desc {
+    color: var(--text-muted);
+    margin-bottom: var(--space-md);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: var(--space-md);
+}
+
+.project-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    padding: 4px 10px;
+    background: var(--border);
+    color: var(--text-muted);
+    border-radius: 100px;
+}
+
+.project-links {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.project-link {
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Other projects (compact) */
+.projects-other h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--text-muted);
+}
+
+.projects-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+@media (max-width: 768px) {
+    .projects-compact {
+        grid-template-columns: 1fr;
+    }
+}
+
+.project-card.compact {
+    padding: var(--space-md);
+}
+
+.project-card.compact .project-name {
+    font-size: 1rem;
+}
+
+.project-card.compact .project-desc {
+    font-size: 0.875rem;
+    margin-bottom: var(--space-sm);
+}
