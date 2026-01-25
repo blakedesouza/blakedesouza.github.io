@@ -1,2 +1,5 @@
 # Planning documents (local only)
 docs/
+
+# Git worktrees
+.worktrees/
