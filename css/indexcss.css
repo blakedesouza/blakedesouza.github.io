@@ -302,3 +302,86 @@ a:hover {
 .section-content p {
     margin-bottom: var(--space-md);
 }
+
+/* ==========================================================================
+   About Section
+   ========================================================================== */
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+}
+
+.chip {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    background: var(--border);
+    color: var(--text-muted);
+    border-radius: 100px;
+}
+
+.dark-mode .chip {
+    background: var(--border);
+}
+
+/* ==========================================================================
+   Experience Section
+   ========================================================================== */
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.experience-card {
+    padding: var(--space-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.experience-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-left: 2px solid var(--accent);
+}
+
+.dark-mode .experience-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.experience-title {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.experience-title i {
+    color: var(--accent);
+    font-size: 0.875em;
+}
+
+.experience-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.experience-desc {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+}
