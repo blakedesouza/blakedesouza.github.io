@@ -1,154 +1,80 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const loadingScreen = document.getElementById('loadingScreen');
-    const profileImage = document.getElementById('profileImage');
-    const spacerImage = document.getElementById('spacerImage');
+    const nav = document.getElementById('nav');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = themeToggle.querySelector('i');
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            loadingScreen.style.opacity = '0';
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 500);
-        }, 800);
-    });
 
-    function createErrorMessage(imgElement, fallbackText) {
-        const existingError = imgElement.nextElementSibling;
-        if (existingError && existingError.classList.contains('error-message')) {
-            existingError.remove();
-        }
-        
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.textContent = `Failed to load ${fallbackText}`;
-        imgElement.parentNode.insertBefore(errorDiv, imgElement.nextSibling);
-        errorDiv.style.display = 'block';
-        
-        console.error(`Image load failed: ${fallbackText}`);
-    }
-
-    if (profileImage) {
-        profileImage.onerror = () => createErrorMessage(profileImage, 'profile image');
-    }
-    
-    if (spacerImage) {
-        spacerImage.onerror = () => createErrorMessage(spacerImage, 'spacer image');
-    }
-
-    function openTab(tabName, button = null) {
-        tabContents.forEach(content => {
-            content.classList.remove('active');
-            content.style.display = 'none';
-            content.setAttribute('aria-hidden', 'true');
-        });
-
-        tabButtons.forEach(btn => {
-            btn.classList.remove('active');
-            btn.setAttribute('aria-selected', 'false');
-        });
-
-        const selectedTab = document.getElementById(tabName);
-        if (selectedTab) {
-            selectedTab.style.display = 'block';
-            selectedTab.setAttribute('aria-hidden', 'false');
-            
-            setTimeout(() => {
-                selectedTab.classList.add('active');
-            }, 10);
-            
-            if (button) {
-                button.classList.add('active');
-                button.setAttribute('aria-selected', 'true');
-            } else {
-                const correspondingButton = document.querySelector(`.tab-button[onclick*="${tabName}"]`);
-                if (correspondingButton) {
-                    correspondingButton.classList.add('active');
-                    correspondingButton.setAttribute('aria-selected', 'true');
-                }
-            }
-            
-            history.pushState(null, null, `#${tabName}`);
-        }
-    }
-
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const tabName = this.textContent.toLowerCase().replace(/\s+/g, '');
-            openTab(tabName === 'aboutme' ? 'about' : tabName, this);
-        });
-    });
-
-    const hash = window.location.hash.slice(1);
-    if (hash && ['about', 'experience', 'skills'].includes(hash)) {
-        openTab(hash);
-    }
-
-    window.openTab = function(tabName) {
-        openTab(tabName);
-    };
-
-    function updateTheme(isDark) {
-        if (isDark) {
-            document.documentElement.classList.add('dark-mode');
-            document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-            document.querySelectorAll('header, footer').forEach(el => {
-                el.classList.add('dark-mode');
-            });
-        } else {
-            document.documentElement.classList.remove('dark-mode');
-            document.body.classList.remove('dark-mode');
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-            document.querySelectorAll('header, footer').forEach(el => {
-                el.classList.remove('dark-mode');
-            });
-        }
-    }
-    
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    updateTheme(savedDarkMode);
-
-    themeToggle.addEventListener('click', () => {
-        const isDarkMode = !document.body.classList.contains('dark-mode');
-        updateTheme(isDarkMode);
-        
-        localStorage.setItem('darkMode', isDarkMode);
-    });
-
+    // Nav scroll effect
     window.addEventListener('scroll', function() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            scrollToTopBtn.classList.add('visible');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
         } else {
-            scrollToTopBtn.classList.remove('visible');
+            nav.classList.remove('scrolled');
         }
     }, { passive: true });
 
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    // Mobile nav toggle
+    navToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('open');
+        const icon = navToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('open');
+            const icon = navToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
         });
     });
 
+    // Dark mode
+    function setTheme(isDark) {
+        document.documentElement.classList.toggle('dark-mode', isDark);
+        document.body.classList.toggle('dark-mode', isDark);
+        themeIcon.classList.toggle('fa-moon', !isDark);
+        themeIcon.classList.toggle('fa-sun', isDark);
+        localStorage.setItem('darkMode', isDark);
+    }
+
+    // Check system preference, then localStorage
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('darkMode');
+    const isDark = savedTheme !== null ? savedTheme === 'true' : prefersDark;
+    setTheme(isDark);
+
+    themeToggle.addEventListener('click', function() {
+        const isDark = !document.body.classList.contains('dark-mode');
+        setTheme(isDark);
+    });
+
+    // Smooth scroll for nav links (with offset for fixed nav)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
-            if (targetId !== '#') {
+            if (targetId === '#') {
                 e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                const offset = nav.offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
             }
         });
+    });
+
+    // Page fade-in
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.3s ease';
+    requestAnimationFrame(() => {
+        document.body.style.opacity = '1';
     });
 });
