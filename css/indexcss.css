@@ -385,3 +385,62 @@ a:hover {
     color: var(--text-muted);
     font-size: 0.9375rem;
 }
+
+/* ==========================================================================
+   Skills Section
+   ========================================================================== */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.skills-category h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+}
+
+.skills-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    list-style: none;
+}
+
+.skill-pill {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    padding: 8px 14px;
+    background: var(--border);
+    color: var(--accent);
+    border-radius: var(--radius);
+    transition: background var(--transition), color var(--transition);
+}
+
+.skill-pill:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.skills-list {
+    list-style: none;
+}
+
+.skills-list li {
+    padding: var(--space-sm) 0;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.skills-list li:last-child {
+    border-bottom: none;
+}
