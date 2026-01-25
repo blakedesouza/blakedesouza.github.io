@@ -197,6 +197,36 @@ a:hover {
     justify-content: center;
     text-align: center;
     padding: var(--space-lg);
+    background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.hero-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--space-lg);
+    border: 3px solid var(--accent);
+    box-shadow: 0 8px 24px rgba(13, 148, 136, 0.2);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.hero-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(13, 148, 136, 0.3);
 }
 
 .hero-name {
@@ -221,6 +251,11 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+    .hero-photo {
+        width: 120px;
+        height: 120px;
+    }
+
     .hero-name {
         font-size: 2.5rem;
     }
@@ -286,12 +321,15 @@ a:hover {
 
 .section-label {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     color: var(--accent);
     margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
 }
 
 .section-content {
