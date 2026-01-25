@@ -3,234 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blake DeSouza - IT Support Specialist | System Administrator | Software Developer">
+    <meta name="description" content="Blake DeSouza - Building reliable systems. Solving real problems.">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://blakedesouza.github.io/">
     <meta property="og:title" content="Blake DeSouza | Portfolio">
-    <meta property="og:description" content="IT Support Specialist | System Administrator | Software Developer">
+    <meta property="og:description" content="Building reliable systems. Solving real problems.">
     <meta property="og:image" content="https://blakedesouza.github.io/images/me.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Blake DeSouza | Portfolio">
-    <meta name="twitter:description" content="IT Support Specialist | System Administrator | Software Developer">
+    <meta name="twitter:description" content="Building reliable systems. Solving real problems.">
     <meta name="twitter:image" content="https://blakedesouza.github.io/images/me.png">
 
     <title>Blake DeSouza | Portfolio</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/indexcss.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
 </head>
 <body>
-    <div class="loading" id="loadingScreen">
-        <div class="loading-spinner"></div>
-    </div>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-brand">Blake DeSouza</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></li>
+        </ul>
+    </nav>
 
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </button>
-
-    <button id="scrollToTop" class="scroll-top" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <header>
-        <div class="profile-container">
-            <img src="images/me.png" alt="Blake DeSouza" class="profile-img" id="profileImage" loading="eager">
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-name">Blake DeSouza</h1>
+        <p class="hero-statement">Building reliable systems. Solving real problems.</p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="docs/Blake_DeSouza_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
         </div>
-        <div class="header-content">
-            <h1>Blake DeSouza</h1>
-            <p>IT Support Specialist | System Administrator | Software Developer</p>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <p class="section-label">About</p>
+        <div class="section-content">
+            <p>I'm an IT Support Specialist and System Administrator with a Computer Science background from Troy University. I specialize in Python, C#, and web development, with hands-on experience managing servers, networks, and virtualization environments.</p>
+            <div class="chips">
+                <span class="chip">MTA: Security Fundamentals</span>
+                <span class="chip">MTA: HTML & CSS</span>
+                <span class="chip">MOS: Access</span>
+                <span class="chip">Phi Theta Kappa</span>
+                <span class="chip">Sigma Kappa Delta</span>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main class="main-content">
-        <div class="tab-container">
-            <nav class="tabs" role="tablist">
-                <button class="tab-button active" onclick="openTab('about')" aria-selected="true" role="tab" aria-controls="about">About Me</button>
-                <button class="tab-button" onclick="openTab('experience')" aria-selected="false" role="tab" aria-controls="experience">Experience</button>
-                <button class="tab-button" onclick="openTab('skills')" aria-selected="false" role="tab" aria-controls="skills">Skills</button>
-                <button class="tab-button" onclick="openTab('projects')" aria-selected="false" role="tab" aria-controls="projects">Projects</button>
-            </nav>
-
-            <div id="about" class="tab-content active" role="tabpanel">
-                <div class="about-content">
-                    <p>Hello! I'm Blake, an IT Support Specialist and System Administrator with a background in Computer Science from Troy University. I specialize in Python, C#, C++, and web development. I'm passionate about solving technical problems and always looking to expand my skillset.</p>
-
-                    <h3>Certifications</h3>
-                    <ul class="achievement-list">
-                        <li>Microsoft Technology Associate: Security Fundamentals (2018)</li>
-                        <li>Microsoft Technology Associate: HTML and CSS Programming (2018)</li>
-                        <li>Microsoft Office Specialist: Access (2017)</li>
-                    </ul>
-
-                    <h3>Honors & Awards</h3>
-                    <ul class="achievement-list">
-                        <li>National English Honor Society – Sigma Kappa Delta (2020)</li>
-                        <li>International Honor Society – Phi Theta Kappa (2020)</li>
-                    </ul>
+    <!-- Experience -->
+    <section class="section" id="experience">
+        <p class="section-label">Experience</p>
+        <div class="experience-list">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <span class="experience-title"><i class="fas fa-briefcase"></i> Independent Software Developer</span>
+                    <span class="experience-date">Jan 2023 - Present</span>
                 </div>
+                <p class="experience-desc">Developing software solutions with Python, C#, and web technologies.</p>
             </div>
-
-            <div id="experience" class="tab-content" role="tabpanel">
-                <div class="experience-grid">
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <h3><i class="fas fa-briefcase"></i> Independent Software Developer</h3>
-                            <span class="experience-date">Jan 2023 - Present</span>
-                        </div>
-                        <p class="experience-description">Developing software solutions and applications independently. Working on various projects involving Python, C#, and web technologies.</p>
-                    </div>
-
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <h3><i class="fas fa-server"></i> Home Lab Administrator</h3>
-                            <span class="experience-date">Jul 2020 - Present</span>
-                        </div>
-                        <p class="experience-description">Managing personal server infrastructure for various purposes including gaming servers, storage solutions, and virtualization environments. Hands-on experience with Linux, Windows Server, and network configuration.</p>
-                    </div>
-
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <h3><i class="fas fa-graduation-cap"></i> Troy University</h3>
-                            <span class="experience-date">2022 - 2025</span>
-                        </div>
-                        <p class="experience-description">Studied Computer Science, gaining strong foundations in programming, algorithms, and software development principles.</p>
-                    </div>
-
-                    <div class="experience-card">
-                        <div class="experience-header">
-                            <h3><i class="fas fa-university"></i> Jefferson State Community College</h3>
-                            <span class="experience-date">Aug 2019 - May 2021</span>
-                        </div>
-                        <p class="experience-description">Completed foundational coursework and earned academic honors including Phi Theta Kappa and Sigma Kappa Delta membership.</p>
-                    </div>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <span class="experience-title"><i class="fas fa-server"></i> Home Lab Administrator</span>
+                    <span class="experience-date">Jul 2020 - Present</span>
                 </div>
+                <p class="experience-desc">Managing personal server infrastructure including gaming servers, storage, and virtualization.</p>
             </div>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <span class="experience-title"><i class="fas fa-graduation-cap"></i> Troy University</span>
+                    <span class="experience-date">2022 - 2025</span>
+                </div>
+                <p class="experience-desc">B.S. Computer Science - programming, algorithms, and software development.</p>
+            </div>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <span class="experience-title"><i class="fas fa-university"></i> Jefferson State Community College</span>
+                    <span class="experience-date">Aug 2019 - May 2021</span>
+                </div>
+                <p class="experience-desc">Foundational coursework with academic honors.</p>
+            </div>
+        </div>
+    </section>
 
-            <div id="skills" class="tab-content" role="tabpanel">
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h3><i class="fas fa-code"></i> Programming Languages I am Proficient in</h3>
-                        <ul class="language-list">
-                            <li class="python">Python</li>
-                            <li class="cpp">C++</li>
-                            <li class="csharp">C#</li>
-                            <li class="html">HTML</li>
-                            <li class="css">CSS</li>
-                            <li class="java">Java</li>
-                            <li class="lua">Lua</li>
-                            <li class="git">Git</li>
-                        </ul>
+    <!-- Skills -->
+    <section class="section" id="skills">
+        <p class="section-label">Skills</p>
+        <div class="skills-grid">
+            <div class="skills-category">
+                <h3>Languages</h3>
+                <ul class="skills-pills">
+                    <li class="skill-pill">Python</li>
+                    <li class="skill-pill">C++</li>
+                    <li class="skill-pill">C#</li>
+                    <li class="skill-pill">Java</li>
+                    <li class="skill-pill">Rust</li>
+                    <li class="skill-pill">HTML/CSS</li>
+                    <li class="skill-pill">Lua</li>
+                    <li class="skill-pill">Git</li>
+                </ul>
+            </div>
+            <div class="skills-category">
+                <h3>Technical</h3>
+                <ul class="skills-list">
+                    <li>Linux & Windows administration</li>
+                    <li>Network configuration & security</li>
+                    <li>Server & VM management</li>
+                    <li>Hardware diagnostics & repair</li>
+                    <li>Software troubleshooting</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+        <p class="section-label">Projects</p>
+
+        <!-- Featured Projects -->
+        <div class="projects-featured">
+            <div class="project-card featured">
+                <div class="project-content">
+                    <h3 class="project-name"><i class="fas fa-warehouse"></i> Warehouse Manager</h3>
+                    <p class="project-desc">Full-stack web app for managing warehouse workers, shifts, and staffing levels in real-time. Features live dashboards, smart auto-assignment, dark mode, and keyboard shortcuts.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Flask</span>
+                        <span class="project-tag">SQLAlchemy</span>
+                        <span class="project-tag">Chart.js</span>
                     </div>
-                    <div class="skill-card">
-                        <h3><i class="fas fa-cogs"></i> Technical Skills</h3>
-                        <ul class="tech-skills-list">
-                            <li>Linux and Windows system administration</li>
-                            <li>Network configuration and security</li>
-                            <li>Server administration and management</li>
-                            <li>Virtual Machine creation and management</li>
-                            <li>Building custom computer systems from component selection to assembly</li>
-                            <li>Computer repair and maintenance for both hardware and software issues</li>
-                            <li>Software troubleshooting and debugging</li>
-                            <li>Hardware diagnostics and problem resolution</li>
-                        </ul>
+                    <div class="project-links">
+                        <a href="https://warehouse-manager-bq3v.onrender.com/" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-play-circle"></i> Live Demo</a>
+                        <a href="https://github.com/blakedesouza/personal-projects/tree/master/warehouse-manager" class="project-link" target="_blank" rel="noopener">GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
+                <img src="images/powerapps-dashboard.gif" alt="Warehouse Manager Demo" class="project-image" loading="lazy">
             </div>
 
-            <div id="projects" class="tab-content" role="tabpanel">
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3><i class="fas fa-warehouse"></i> Warehouse Manager</h3>
-                        <p>A full-stack web application for managing warehouse workers, shifts, and staffing levels in real-time. Features live dashboards, smart auto-assignment to understaffed locations, dark mode, keyboard shortcuts, and more.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Flask</span>
-                            <span class="tag">SQLAlchemy</span>
-                            <span class="tag">Chart.js</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://warehouse-manager-bq3v.onrender.com/" class="project-link" target="_blank" rel="noopener">
-                                <i class="fas fa-play-circle"></i> Live Demo
-                            </a>
-                            <a href="https://github.com/blakedesouza/personal-projects/tree/master/warehouse-manager" class="project-link" target="_blank" rel="noopener">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
+            <div class="project-card featured">
+                <div class="project-content">
+                    <h3 class="project-name"><i class="fas fa-gamepad"></i> ML Tetris Trainer</h3>
+                    <p class="project-desc">Reinforcement learning app that trains an AI to play Tetris. Watch it learn in real-time through a web dashboard, control training with pause/resume/speed, and compare model versions.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Stable-Baselines3</span>
+                        <span class="project-tag">FastAPI</span>
+                        <span class="project-tag">WebSockets</span>
                     </div>
-
-                    <div class="project-card">
-                        <h3><i class="fas fa-cloud"></i> Warehouse Dashboard (Power Apps)</h3>
-                        <img src="images/powerapps-dashboard.gif" alt="Power Apps Dashboard Demo" class="project-preview" loading="lazy">
-                        <p>Real-time staffing dashboard built on Microsoft Power Platform. Displays warehouse capacity with color-coded status indicators, active worker shifts with live duration counters, and auto-refreshing data. SharePoint lists handle data storage with lookup relationships.</p>
-                        <div class="project-tags">
-                            <span class="tag">Power Apps</span>
-                            <span class="tag">SharePoint</span>
-                            <span class="tag">Power Fx</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/blakedesouza/personal-projects/tree/master/warehouse-manager-powerapps" class="project-link" target="_blank" rel="noopener">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
+                    <div class="project-links">
+                        <a href="https://github.com/blakedesouza/mlTetris" class="project-link" target="_blank" rel="noopener">GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
+                </div>
+                <div></div>
+            </div>
+        </div>
 
-                    <div class="project-card">
-                        <h3><i class="fas fa-gamepad"></i> ML Tetris Trainer</h3>
-                        <p>A reinforcement learning application that trains an AI to play Tetris. Watch the AI learn in real-time through a web dashboard, control training with pause/resume/speed adjustments, and manage multiple model versions with a comparison leaderboard and demo playback.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Stable-Baselines3</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">WebSockets</span>
-                            <span class="tag">Chart.js</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/blakedesouza/mlTetris" class="project-link" target="_blank" rel="noopener">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
+        <!-- Other Projects -->
+        <div class="projects-other">
+            <h3>Other Projects</h3>
+            <div class="projects-compact">
+                <div class="project-card compact">
+                    <h3 class="project-name"><i class="fas fa-cloud"></i> Power Apps Dashboard</h3>
+                    <p class="project-desc">Real-time staffing dashboard built on Microsoft Power Platform with SharePoint integration.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Power Apps</span>
+                        <span class="project-tag">SharePoint</span>
                     </div>
-
-                    <div class="project-card">
-                        <h3><i class="fas fa-volume-xmark"></i> MuteOnUnfocus</h3>
-                        <p>A Windows utility that automatically mutes applications when they lose focus and restores audio when they regain focus. Features multiple profiles for different use cases, system tray integration, optional Windows startup, and minimal resource usage.</p>
-                        <div class="project-tags">
-                            <span class="tag">Rust</span>
-                            <span class="tag">Windows</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/blakedesouza/muteonunfocus" class="project-link" target="_blank" rel="noopener">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
+                    <div class="project-links">
+                        <a href="https://github.com/blakedesouza/personal-projects/tree/master/warehouse-manager-powerapps" class="project-link" target="_blank" rel="noopener">GitHub <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card compact">
+                    <h3 class="project-name"><i class="fas fa-volume-xmark"></i> MuteOnUnfocus</h3>
+                    <p class="project-desc">Windows utility that auto-mutes apps when they lose focus. Multiple profiles, system tray, minimal resources.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Rust</span>
+                        <span class="project-tag">Windows</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/blakedesouza/muteonunfocus" class="project-link" target="_blank" rel="noopener">GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <img src="images/diego.png" alt="Diego" class="spacer-image" id="spacerImage" loading="lazy">
-    </main>
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <p class="section-label">Contact</p>
+        <div class="contact-content">
+            <h2 class="contact-heading">Get in touch</h2>
+            <p class="contact-text">I'm open to new opportunities. Feel free to reach out.</p>
+            <a href="mailto:blakedesouza@protonmail.com" class="contact-email">blakedesouza@protonmail.com</a>
+            <div class="contact-buttons">
+                <a href="docs/Blake_DeSouza_Resume.pdf" class="btn btn-primary" download><i class="fas fa-file-download"></i> Download PDF</a>
+                <a href="resume.html" class="btn btn-outline" target="_blank"><i class="fas fa-eye"></i> View Online</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/blakedesouza" target="_blank" rel="noopener" aria-label="GitHub" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/blake-desouza-452595346/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
     <footer>
-        <h2>Contact Me</h2>
-        <p>I'm always interested in new opportunities. Feel free to reach out!</p>
-        <div class="resume-buttons">
-            <a href="docs/Blake_DeSouza_Resume.pdf" class="resume-btn" download>
-                <i class="fas fa-file-download"></i> Download PDF
-            </a>
-            <a href="resume.html" class="resume-btn" target="_blank">
-                <i class="fas fa-eye"></i> View Online
-            </a>
-        </div>
-        <div class="social-links">
-            <a href="https://github.com/blakedesouza" target="_blank" rel="noopener" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/blake-desouza-452595346/" target="_blank" rel="noopener" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:blakedesouza@protonmail.com" aria-label="Email Me"><i class="fas fa-envelope"></i></a>
-        </div>
+        <p class="footer-copy">&copy; 2026 Blake DeSouza</p>
+        <img src="images/diego.png" alt="" class="footer-diego" title="diego">
     </footer>
 
     <script src="js/indexscripts.js"></script>
